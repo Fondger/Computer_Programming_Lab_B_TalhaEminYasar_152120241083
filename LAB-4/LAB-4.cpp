@@ -73,7 +73,45 @@ void Display() {
         MoneyBundle* Temp = top;
         while (Temp != nullptr) {
             std::cout << "Seri No: " << Temp->serialNumber << " | Tur: " << Temp->currencyType
-                << " | (100:" << Temp->billCounts
+                << " | (100:" << Temp->billCounts[0] << ", 50:" << Temp->billCounts[1]
+                << ", 20:" << Temp->billCounts[2] << ")" << std::endl;
+            Temp = Temp->next;
         }
     }
+
+    std::cout << "\n--- MUSTERI SIRASI ---" << std::endl;
+    if (front == -1) {
+        std::cout << "Sira bos!" << std::endl;
+    }
+    else {
+        int i = front;
+        while (true) {
+            std::cout << "Musteri: " << queueArray[i].customerName
+                << " [" << queueArray[i].transactionType << "]" << std::endl;
+            if (i == rear) break;
+            i = (i + 1) % MAX_SIZE;
+        }
+    }
+    std::cout << "----------------------------" << std::endl;
+}
+
+int main() {
+    int b1[3] = { 10, 5, 2 };
+    int b2[3] = { 20, 10, 5 };
+
+    Push("SN1001", "TL", b1);
+    Push("SN1002", "USD", b2);
+
+    Enqueue("Ahmet", "Para Cekme");
+    Enqueue("Ayse", "Para Yatirma");
+
+    std::cout << "--- ISLEM ONCESI DURUM ---" << std::endl;
+    Display();
+
+    ProcessTransaction();
+
+    std::cout << "--- ISLEM SONRASI DURUM ---" << std::endl;
+    Display();
+
+    return 0;
 }
