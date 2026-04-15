@@ -65,13 +65,13 @@ void transferStack(Stack* source, Stack* destination) {
     initStack(&stackB);
     Queue tempQueue;
     initQueue(&tempQueue);
-    
+
     while (bool(isStackEmpty(stackA) == false)
         pop(&stackA, dequeue(q));
 
-    while (bool(isStackEmpty(StackB) == false) 
-        enqueue(q,push(&stackB));
-    
+    while (bool(isStackEmpty(StackB) == false)
+        enqueue(q, push(&stackB));
+
 
     // TODO: 
     // Use the push, pop, enqueue, and dequeue functions 
